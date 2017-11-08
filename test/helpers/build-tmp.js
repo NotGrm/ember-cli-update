@@ -34,4 +34,6 @@ module.exports = function(options) {
     cwd: tmpPath,
     dirty
   });
+
+  fs.writeFileSync(path.join(tmpSubPath, 'testem.log'), 'gitignored');
 };
