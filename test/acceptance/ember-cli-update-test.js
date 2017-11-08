@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs-extra');
 const path = require('path');
 const expect = require('chai').expect;
 const tmp = require('tmp');
@@ -53,6 +54,8 @@ describe('Acceptance - ember-cli-build', function() {
   function fixtureCompare(options) {
     let mergeFixtures = options.mergeFixtures;
 
+    fs.ensureFileSync(path.join(mergeFixtures, 'testem.log'));
+
     let actual = tmpPath;
     let expected = mergeFixtures;
 
@@ -63,7 +66,7 @@ describe('Acceptance - ember-cli-build', function() {
     });
   }
 
-  it('updates app', function() {
+  it.only('updates app', function() {
     return merge({
       fixturesPath: 'test/fixtures/local/my-app'
     }).then(result => {

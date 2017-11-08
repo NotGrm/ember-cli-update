@@ -35,5 +35,5 @@ module.exports = function(options) {
     dirty
   });
 
-  fs.writeFileSync(path.join(tmpSubPath, 'testem.log'), 'gitignored');
+  fs.ensureFileSync(path.join(tmpSubPath, 'testem.log'));
 };
